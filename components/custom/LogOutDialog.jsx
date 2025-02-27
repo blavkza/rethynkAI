@@ -18,6 +18,7 @@ function LogOutDialog({ openDialog, closeDialog }) {
     localStorage.removeItem("user");
 
     router.push("/");
+    window.location.reload();
     router.refresh();
   };
 

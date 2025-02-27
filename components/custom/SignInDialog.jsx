@@ -48,7 +48,9 @@ function SignInDialog({ openDialog, closeDialog }) {
         localStorage.setItem("user", JSON.stringify(user));
       }
 
+      window.location.reload();
       closeDialog(false);
+
       router.refresh();
     },
     onError: (errorResponse) => console.log(errorResponse),

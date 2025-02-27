@@ -70,7 +70,7 @@ function Hero() {
           <div className="flex gap-2">
             <textarea
               placeholder="What do you want to build today?"
-              className="outline-none bg-transparent w-full h-24 max-h-56 resize-none overflow-auto text-muted-foreground hide-scrollbar"
+              className="outline-none bg-transparent w-full h-24 max-h-56 resize-none overflow-y-auto text-muted-foreground hide-scrollbar"
               value={input}
               onChange={handleInputChange}
             />

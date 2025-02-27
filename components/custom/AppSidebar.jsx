@@ -28,7 +28,10 @@ export function AppSidebar() {
       <SidebarHeader className="p-2">
         <div className="flex justify-between items-center px-4 mb-2">
           <Logo />{" "}
-          <PanelRightClose onClick={toggleSidebar} className="w-6 h-6 mt-1" />
+          <PanelRightClose
+            onMouseEnter={toggleSidebar}
+            className="w-6 h-6 mt-1"
+          />
         </div>{" "}
         <Button
           onClick={() => {

@@ -132,9 +132,12 @@ function Header() {
               <Button variant="ghost" onClick={() => setOpenDialog(true)}>
                 Sign In
               </Button>
-              {/*<Button className="bg-blue-400 hover:bg-blue-300 text-white px-4 py-2 rounded-md">
+              <Button
+                onClick={() => setOpenDialog(true)}
+                className="bg-blue-400 hover:bg-blue-300 text-white px-4 py-2 rounded-md"
+              >
                 Get Started
-              </Button>*/}
+              </Button>
             </div>
           )}
         </div>
