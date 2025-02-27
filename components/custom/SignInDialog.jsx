@@ -48,10 +48,10 @@ function SignInDialog({ openDialog, closeDialog }) {
         localStorage.setItem("user", JSON.stringify(user));
       }
 
-      window.location.reload();
       closeDialog(false);
 
       router.refresh();
+      window.location.reload();
     },
     onError: (errorResponse) => console.log(errorResponse),
   });
