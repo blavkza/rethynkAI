@@ -42,7 +42,7 @@ function SideBarFooter() {
       ))}
       <div
         onClick={() => setOpenDialogLogOut(true)}
-        className=" p-1 px-3 flex items-center justify-start gap-2 hover:bg-zinc-700/50 rounded-md"
+        className=" p-1 px-3 flex items-center justify-start gap-2 dark:hover:bg-zinc-700/50 hover:bg-zinc-100/50 rounded-md cursor-pointer"
       >
         <LogOut className="w-5 h-5 " />
         Sign Out

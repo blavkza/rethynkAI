@@ -16,7 +16,13 @@ import { MessagesContext } from "@/context/MessagesContext";
 import { useConvex, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useParams } from "next/navigation";
-import { Fullscreen, Loader2Icon, XCircle } from "lucide-react";
+import {
+  Fullscreen,
+  Loader2Icon,
+  Monitor,
+  Smartphone,
+  XCircle,
+} from "lucide-react";
 import SandpackPreviewClient from "./SandpackPreview";
 import { ActionContext } from "@/context/ActionContext";
 import { Button } from "../ui/button";
@@ -26,6 +32,7 @@ function CodeView() {
   const [files, setFiles] = useState(Lookup?.DEFAULT_FILE);
   const [isLoading, setIsLoading] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
+  const [isPhoneScreen, setIsPhoneScreen] = useState(false);
 
   const { id } = useParams();
   const convex = useConvex();
@@ -106,7 +113,7 @@ function CodeView() {
     <div className="w-full relative">
       {!fullscreen ? (
         <>
-          <div className="bg-[#18181818] w-full p-2 border">
+          <div className="dark:bg-[#18181818] bg-zinc-900 w-full p-2 border">
             <div className="flex justify-between">
               <div className="flex gap-1 items-center justify-center flex-wrap shrink-0 bg-zinc-700/50 w-[120px] h-[35px] p-1 rounded-full">
                 <h2
@@ -167,35 +174,54 @@ function CodeView() {
           </SandpackProvider>
         </>
       ) : (
-        <div className="fixed inset-0 bg-zinc-900 z-40">
-          <XCircle
-            onClick={() => setFullscreen(false)}
-            className="absolute top-3 right-4 rounded-full z-50 w-8 h-8"
-          />
-
-          <div className="">
-            {" "}
-            <SandpackProvider
-              template="react"
-              theme={"dark"}
-              files={files}
-              customSetup={{
-                dependencies: {
-                  ...Lookup.DEPENDANCY,
-                },
-              }}
-              options={{
-                externalResources: ["https://cdn.tailwindcss.com"],
-              }}
-            >
-              <SandpackLayout>
-                <SandpackPreview
-                  style={{ height: "100vh" }}
-                  showNavigator={true}
-                />
-              </SandpackLayout>
-            </SandpackProvider>
+        <div className="fixed inset-0 bg-zinc-900 z-40 flex items-center justify-center">
+          {/* Controls */}
+          <div className="absolute top-3 right-4 rounded-full z-50 flex gap-3 items-center justify-between border-2 p-1 px-3 bg-zinc-600/50">
+            {!isPhoneScreen ? (
+              <Smartphone
+                onClick={() => setIsPhoneScreen(true)}
+                className="cursor-pointer"
+              />
+            ) : (
+              <Monitor
+                onClick={() => setIsPhoneScreen(false)}
+                className="cursor-pointer"
+              />
+            )}
+            <XCircle
+              onClick={() => setFullscreen(false)}
+              className="cursor-pointer"
+            />
           </div>
+
+          {/* Sandpack */}
+          <SandpackProvider
+            template="react"
+            theme="dark"
+            files={files}
+            customSetup={{
+              dependencies: { ...Lookup.DEPENDANCY },
+            }}
+            options={{
+              externalResources: ["https://cdn.tailwindcss.com"],
+            }}
+          >
+            <SandpackLayout>
+              <SandpackPreview
+                style={{
+                  width: isPhoneScreen ? "340px" : "100vw",
+                  height: isPhoneScreen ? "640px" : "100vh",
+                  maxWidth: isPhoneScreen ? "375px" : "100vw",
+                  maxHeight: isPhoneScreen ? "812px" : "100vh",
+                  borderRadius: isPhoneScreen ? "20px" : "0px",
+                  overflow: "hidden",
+                  border: isPhoneScreen ? "5px solid #444" : "none",
+                  transition: "all 0.3s ease-in-out",
+                }}
+                showNavigator={true}
+              />
+            </SandpackLayout>
+          </SandpackProvider>
         </div>
       )}
 

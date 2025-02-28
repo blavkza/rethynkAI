@@ -100,7 +100,7 @@ function ChatView() {
           <div className="flex-1 overflow-y-auto custom-scrollbar rounded-md p-2">
             {messages?.map((message, index) => (
               <div
-                className="bg-zinc-700/50 p-3 rounded-lg mb-2 flex items-start gap-4 leading-7"
+                className="bg-zinc-300/50 dark:bg-zinc-700/50 p-3 rounded-lg mb-2 flex items-start gap-4 leading-7"
                 key={index}
               >
                 {message?.role === "user" && userDetail?.picture && (
@@ -112,10 +112,20 @@ function ChatView() {
                     alt="User Profile"
                   />
                 )}
-                <div className="markdown-body chat-bubble prose prose-invert max-w-none">
+                <div className="markdown-body chat-bubble prose prose-invert max-w-none dark:text-white text-zinc-900">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}
+                    components={{
+                      a: ({ node, ...props }) => (
+                        <a
+                          {...props}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ wordBreak: "break-all" }}
+                        />
+                      ),
+                    }}
                   >
                     {message.content}
                   </ReactMarkdown>
@@ -131,11 +141,11 @@ function ChatView() {
             <div ref={messagesEndRef} />
           </div>
         )}
-        <div className="p-5 bg-zinc-900/50 border border-l-blue-500 border-t-blue-500 rounded-xl max-w-5xl w-full mt-3 custom-shadow shadow-blue-300/50">
+        <div className="p-5 bg-zinc-300/50 dark:bg-zinc-700/50 border border-l-blue-500 border-t-blue-500 rounded-xl max-w-5xl w-full mt-3 custom-shadow shadow-blue-300/50">
           <div className="flex gap-2 w-full">
             <textarea
               placeholder="What do you want to build today?"
-              className="outline-none bg-transparent w-full h-24 max-h-56 resize-none overflow-auto text-muted-foreground hide-scrollbar"
+              className="outline-none bg-transparent w-full h-24 max-h-56 resize-none overflow-auto text-zinc-900 dark:text-muted-foreground hide-scrollbar"
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />

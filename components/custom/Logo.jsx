@@ -7,7 +7,8 @@ function Logo() {
       <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
         RE
       </span>
-      :<span className="text-gray-900 dark:text-white">THYNK.AI</span>
+      <span className="dark:text-white text-zinc-900">:</span>
+      <span className="text-gray-900 dark:text-white">THYNK.AI</span>
     </Link>
   );
 }

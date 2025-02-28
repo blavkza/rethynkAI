@@ -28,10 +28,7 @@ export function AppSidebar() {
       <SidebarHeader className="p-2">
         <div className="flex justify-between items-center px-4 mb-2">
           <Logo />{" "}
-          <PanelRightClose
-            onMouseEnter={toggleSidebar}
-            className="w-6 h-6 mt-1"
-          />
+          <PanelRightClose onClick={toggleSidebar} className="w-6 h-6 mt-1" />
         </div>{" "}
         <Button
           onClick={() => {
@@ -42,7 +39,7 @@ export function AppSidebar() {
         >
           <MessageCircleCode /> Start New Chat
         </Button>
-        <h2 className="font-medium text-lg text-center text-zinc-400">
+        <h2 className="font-medium text-lg text-center dark:text-zinc-400 text-zinc-700">
           Your Chat
         </h2>
       </SidebarHeader>

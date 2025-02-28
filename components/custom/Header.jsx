@@ -15,6 +15,7 @@ import {
 import { useSidebar } from "../ui/sidebar";
 import SignInDialog from "./SignInDialog"; // Import SignInDialog component
 import LogOutDialog from "./LogOutDialog";
+import { ModeToggle } from "../ui/theme-toggle";
 
 function Header() {
   const { userDetail } = useContext(UserDetailContext);
@@ -52,7 +53,7 @@ function Header() {
                     <TooltipTrigger>
                       <PanelRightOpen
                         onClick={toggleSidebar}
-                        className="w-6 h-6 mt-1"
+                        className="w-6 h-6 mt-1 dark:text-white text-zinc-900"
                       />
                     </TooltipTrigger>
                     <TooltipContent>
@@ -61,25 +62,10 @@ function Header() {
                   </Tooltip>
                 </TooltipProvider>
               )}
-              <div className="hidden md:flex">
+              <div className="">
                 <Logo />
               </div>
               {/*Mobile view */}
-              <div className="flex md:hidden">
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <PanelRightOpen
-                        onClick={toggleSidebar}
-                        className="w-6 h-6 mt-1"
-                      />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Chats</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </div>
             </>
           )}
         </div>
@@ -89,6 +75,7 @@ function Header() {
             <Button
               size="sm"
               variant="ghost"
+              className="dark:text-white text-zinc-900"
               onClick={() => onActionButton("export")}
             >
               <DownloadIcon />
@@ -109,23 +96,26 @@ function Header() {
           {isLoading ? (
             <div className="w-8 h-8 rounded-full bg-gray-300 animate-pulse"></div>
           ) : userDetail ? (
-            <div
-              onClick={() => setOpenDialogLogOut(true)}
-              className="flex items-center cursor-pointer"
-            >
-              {userDetail.picture ? (
-                <Image
-                  src={userDetail.picture}
-                  height={32}
-                  width={32}
-                  className="rounded-full"
-                  alt="User Profile"
-                />
-              ) : (
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold">
-                  {userDetail?.name?.charAt(0).toUpperCase() || "U"}
-                </div>
-              )}
+            <div className="flex items-center gap-4">
+              <ModeToggle />
+              <div
+                onClick={() => setOpenDialogLogOut(true)}
+                className="flex items-center cursor-pointer"
+              >
+                {userDetail.picture ? (
+                  <Image
+                    src={userDetail.picture}
+                    height={32}
+                    width={32}
+                    className="rounded-full"
+                    alt="User Profile"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold">
+                    {userDetail?.name?.charAt(0).toUpperCase() || "U"}
+                  </div>
+                )}
+              </div>
             </div>
           ) : (
             <div className="flex gap-3">

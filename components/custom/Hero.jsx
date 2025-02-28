@@ -59,18 +59,18 @@ function Hero() {
     <>
       {" "}
       <Header />
-      <div className="flex flex-col items-center mt-36 md:mt-28 gap-4 w-full justify-center">
+      <div className="flex flex-col items-center mt-36 md:mt-28 gap-4 w-full justify-center dark:text-white text-zinc-900">
         <h2 className="px-2 text-3xl md:text-5xl font-extrabold text-center">
           What do you want to build?
         </h2>
         <h2 className="text-xs md:text-lg text-muted-foreground">
           Prompt, run, edit, and deploy full-stack web applications.
         </h2>
-        <div className="p-5 bg-zinc-900/50 border border-l-blue-500 border-t-blue-500 rounded-xl max-w-lg w-[90%] mt-24 md:mt-3 custom-shadow shadow-blue-300/50">
+        <div className="p-5 bg-zinc-300/50 dark:bg-zinc-700/50 border border-l-blue-500 border-t-blue-500 rounded-xl max-w-lg w-[90%] mt-24 md:mt-3 custom-shadow shadow-blue-300/50">
           <div className="flex gap-2">
             <textarea
               placeholder="What do you want to build today?"
-              className="outline-none bg-transparent w-full h-24 max-h-56 resize-none overflow-y-auto text-muted-foreground hide-scrollbar"
+              className="outline-none bg-transparent w-full h-24 max-h-56 resize-none overflow-y-auto dark:text-muted-foreground  hide-scrollbar"
               value={input}
               onChange={handleInputChange}
             />
@@ -98,7 +98,7 @@ function Hero() {
           {Lookup?.SUGGSTIONS.map((suggestion, i) => (
             <h2
               onClick={() => onGenerate(suggestion)}
-              className="p-1 px-2 rounded-full border text-xs text-muted-foreground hover:text-white cursor-pointer"
+              className="p-1 px-2 rounded-full border border-zinc-400 dark:border-zinc-800  text-xs dark:text-muted-foreground dark:hover:text-white hover:text-zinc-500 cursor-pointer text-zinc-900"
               key={i}
             >
               {suggestion}
