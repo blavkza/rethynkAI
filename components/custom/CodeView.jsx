@@ -105,7 +105,7 @@ function CodeView() {
         console.error("Error setting up request:", error.message);
       }
     }
-    setActiveTab("code");
+
     setIsLoading(false);
   };
 

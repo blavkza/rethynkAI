@@ -8,12 +8,18 @@ export async function POST(req) {
     const result = await GenAiCode.sendMessage(prompt);
     const AiResponse = result.response.text();
 
-    // Ensure AiResponse is valid JSON before parsing
-    return NextResponse.json(JSON.parse(AiResponse));
+    // Attempt to parse as JSON
+    try {
+      const parsedResponse = JSON.parse(AiResponse);
+      return NextResponse.json(parsedResponse);
+    } catch (parseError) {
+      // If parsing fails, return the response as plain text
+      return NextResponse.json({ response: AiResponse });
+    }
   } catch (error) {
     console.error("Error in /api/ai-code:", error);
     return NextResponse.json(
-      { error: "Failed to generate AI code" },
+      { error: "Failed to generate AI code", details: error.message },
       { status: 500 }
     );
   }
