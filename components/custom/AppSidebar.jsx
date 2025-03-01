@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/sidebar";
 import Logo from "./Logo";
 import { Button } from "../ui/button";
-import { MessageCircleCode, PanelRightClose } from "lucide-react";
+import { MessageCircleCode, PanelRight, PanelRightClose } from "lucide-react";
 import SidebarHistory from "./SidebarHistory";
 import SideBarFooter from "./SidebarFooter";
 import Link from "next/link";
@@ -27,8 +27,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarHeader className="p-2">
         <div className="flex justify-between items-center px-4 mb-2">
-          <Logo />{" "}
-          <PanelRightClose onClick={toggleSidebar} className="w-6 h-6 mt-1" />
+          <Logo /> <PanelRight onClick={toggleSidebar} className="w-6 h-6 " />
         </div>{" "}
         <Button
           onClick={() => {
@@ -36,6 +35,7 @@ export function AppSidebar() {
             toggleSidebar();
           }}
           size="sm"
+          className="bg-gradient-to-r from-blue-500/50 to-sky-200/50 text-transparent text-white"
         >
           <MessageCircleCode /> Start New Chat
         </Button>

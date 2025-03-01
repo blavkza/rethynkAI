@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import { Button } from "../ui/button";
 import { UserDetailContext } from "@/context/userDetailContext";
 import Image from "next/image";
-import { DownloadIcon, Rocket, PanelRightOpen } from "lucide-react";
+import { DownloadIcon, Rocket, PanelRightOpen, PanelLeft } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { ActionContext } from "@/context/ActionContext";
 import {
@@ -43,7 +43,7 @@ function Header() {
 
   return (
     <>
-      <div className="p-4 flex items-center justify-between bg-none">
+      <div className="p-4 flex items-center justify-between bg-none lg:px-8">
         <div className="flex gap-4">
           {!open && (
             <>
@@ -51,7 +51,7 @@ function Header() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger>
-                      <PanelRightOpen
+                      <PanelLeft
                         onClick={toggleSidebar}
                         className="w-6 h-6 mt-1 dark:text-white text-zinc-900"
                       />
@@ -62,10 +62,34 @@ function Header() {
                   </Tooltip>
                 </TooltipProvider>
               )}
-              <div className="">
+              <div className="hidden lg:flex">
                 <Logo />
               </div>
               {/*Mobile view */}
+              {id && (
+                <div className="flex lg:hidden">
+                  {" "}
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <PanelLeft
+                          onClick={toggleSidebar}
+                          className="w-6 h-6 mt-1 dark:text-white text-zinc-900"
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Chats</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+              )}
+
+              {!id && (
+                <div className="flex lg:hidden">
+                  <Logo />
+                </div>
+              )}
             </>
           )}
         </div>
@@ -92,12 +116,12 @@ function Header() {
           </div>
         )}
 
-        <div className="flex gap-5">
-          {isLoading ? (
-            <div className="w-8 h-8 rounded-full bg-gray-300 animate-pulse"></div>
-          ) : userDetail ? (
-            <div className="flex items-center gap-4">
-              <ModeToggle />
+        {!id && (
+          <div className="flex gap-4">
+            <ModeToggle />
+            {isLoading ? (
+              <div className="w-8 h-8 rounded-full bg-gray-300 animate-pulse"></div>
+            ) : userDetail ? (
               <div
                 onClick={() => setOpenDialogLogOut(true)}
                 className="flex items-center cursor-pointer"
@@ -116,21 +140,21 @@ function Header() {
                   </div>
                 )}
               </div>
-            </div>
-          ) : (
-            <div className="flex gap-3">
-              <Button variant="ghost" onClick={() => setOpenDialog(true)}>
-                Sign In
-              </Button>
-              <Button
-                onClick={() => setOpenDialog(true)}
-                className="bg-blue-400 hover:bg-blue-300 text-white px-4 py-2 rounded-md"
-              >
-                Get Started
-              </Button>
-            </div>
-          )}
-        </div>
+            ) : (
+              <div className="flex gap-3">
+                <Button variant="ghost" onClick={() => setOpenDialog(true)}>
+                  Sign In
+                </Button>
+                <Button
+                  onClick={() => setOpenDialog(true)}
+                  className="bg-blue-400 hover:bg-blue-300 text-white px-4 py-2 rounded-md"
+                >
+                  Get Started
+                </Button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Integrating the SignInDialog */}

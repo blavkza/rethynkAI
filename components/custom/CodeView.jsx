@@ -97,15 +97,9 @@ function CodeView() {
       }
     } catch (error) {
       console.error("Error generating AI code:", error);
-      if (error.response) {
-        console.error("Server responded with:", error.response.data);
-      } else if (error.request) {
-        console.error("No response received:", error.request);
-      } else {
-        console.error("Error setting up request:", error.message);
-      }
     }
 
+    setActiveTab("code");
     setIsLoading(false);
   };
 
@@ -137,13 +131,15 @@ function CodeView() {
                   Preview
                 </h2>
               </div>
-              <Button
-                onClick={() => setFullscreen(true)}
-                variant="ghost"
-                size="sm"
-              >
-                <Fullscreen />
-              </Button>
+              {activeTab == "preview" && (
+                <Button
+                  onClick={() => setFullscreen(true)}
+                  variant="ghost"
+                  size="sm"
+                >
+                  <Fullscreen />
+                </Button>
+              )}
             </div>
           </div>
 
@@ -176,7 +172,7 @@ function CodeView() {
       ) : (
         <div className="fixed inset-0 bg-zinc-900 z-40 flex items-center justify-center">
           {/* Controls */}
-          <div className="absolute top-3 right-4 rounded-full z-50 flex gap-3 items-center justify-between border-2 p-1 px-3 bg-zinc-600/50">
+          <div className="absolute top-3 right-4 rounded-full z-50 flex gap-3 items-center justify-between border p-1 px-3 bg-zinc-600">
             {!isPhoneScreen ? (
               <Smartphone
                 onClick={() => setIsPhoneScreen(true)}
@@ -210,7 +206,7 @@ function CodeView() {
               <SandpackPreview
                 style={{
                   width: isPhoneScreen ? "340px" : "100vw",
-                  height: isPhoneScreen ? "640px" : "100vh",
+                  height: isPhoneScreen ? "97vh" : "100vh",
                   maxWidth: isPhoneScreen ? "375px" : "100vw",
                   maxHeight: isPhoneScreen ? "812px" : "100vh",
                   borderRadius: isPhoneScreen ? "20px" : "0px",

@@ -59,14 +59,14 @@ function Hero() {
     <>
       {" "}
       <Header />
-      <div className="flex flex-col items-center mt-36 md:mt-28 gap-4 w-full justify-center dark:text-white text-zinc-900">
+      <div className="flex flex-col items-center mt-36 md:mt-24 gap-4 w-full justify-center dark:text-white text-zinc-900">
         <h2 className="px-2 text-3xl md:text-5xl font-extrabold text-center">
           What do you want to build?
         </h2>
         <h2 className="text-xs md:text-lg text-muted-foreground">
           Prompt, run, edit, and deploy full-stack web applications.
         </h2>
-        <div className="p-5 bg-zinc-300/50 dark:bg-zinc-700/50 border border-l-blue-500 border-t-blue-500 rounded-xl max-w-lg w-[90%] mt-24 md:mt-3 custom-shadow shadow-blue-300/50">
+        <div className="p-5 bg-zinc-300/50 dark:bg-zinc-900/50 border border-l-blue-500 border-t-blue-500 rounded-xl max-w-lg w-[90%] mt-24 lg:mt-20 xl:mt-12 custom-shadow shadow-blue-300/50">
           <div className="flex gap-2">
             <textarea
               placeholder="What do you want to build today?"
@@ -94,7 +94,7 @@ function Hero() {
           </TooltipProvider>
         </div>
 
-        <div className="flex flex-wrap max-w-2xl items-center justify-center gap-2 mt-8">
+        <div className="flex flex-wrap max-w-xl items-center justify-center gap-2 mt-3">
           {Lookup?.SUGGSTIONS.map((suggestion, i) => (
             <h2
               onClick={() => onGenerate(suggestion)}

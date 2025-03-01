@@ -141,7 +141,7 @@ function ChatView() {
             <div ref={messagesEndRef} />
           </div>
         )}
-        <div className="p-5 bg-zinc-300/50 dark:bg-zinc-700/50 border border-l-blue-500 border-t-blue-500 rounded-xl max-w-5xl w-full mt-3 custom-shadow shadow-blue-300/50">
+        <div className="p-5 bg-zinc-300/50 dark:bg-zinc-900/50 border border-l-blue-500 border-t-blue-500 rounded-xl max-w-5xl w-full mt-3 custom-shadow shadow-blue-300/50">
           <div className="flex gap-2 w-full">
             <textarea
               placeholder="What do you want to build today?"
