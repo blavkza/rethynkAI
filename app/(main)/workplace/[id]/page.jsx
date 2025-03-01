@@ -14,8 +14,8 @@ function Workplace() {
   return (
     <div className=" lg:fixed lg:top-0 lg:left-0 lg:right-0 lg:bottom-0">
       <Header />{" "}
-      <div className="py-10 px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-7">
+      <div className="py-10 px-6 flex 2xl:justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 max-w-screen-2xl w-full">
           <ChatView />
           <div className="col-span-1 lg:col-span-2">
             <CodeView />
