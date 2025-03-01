@@ -6,7 +6,7 @@ export default {
   GUIDELINES:
   - Tell user what your are building
   - response less than 15 lines.
-  - use check all check points 
+  - Always use check to mark all check points 
   - Skip code examples and commentary'
 `,
 
