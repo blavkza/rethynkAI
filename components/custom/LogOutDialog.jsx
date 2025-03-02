@@ -32,7 +32,10 @@ function LogOutDialog({ openDialog, closeDialog }) {
               Are you sure you want to Sign Out?
             </DialogTitle>
             <DialogDescription asChild>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center gap-5">
+                <Button onClick={() => closeDialog()} variant="ghost">
+                  Cancel
+                </Button>
                 <Button onClick={handleSignOut} variant="destructive">
                   Sign Out
                 </Button>

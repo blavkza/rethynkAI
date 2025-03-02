@@ -91,13 +91,13 @@ function ChatView() {
   return (
     <div className="relative h-[80vh] flex gap-3">
       {!open && <MiniSidebar />}
-      <div className="flex flex-col w-full lg:w-[350px] xl:w-[470px]">
+      <div className="flex flex-col w-full lg:w-[350px] xl:w-[470px] ">
         {!messages ? (
           <div className="w-full flex-1">
             <ChatViewSkeletonCard />
           </div>
         ) : (
-          <div className="flex-1 overflow-y-auto custom-scrollbar rounded-md p-2">
+          <div className="flex-1 overflow-y-auto custom-scrollbar rounded-md ">
             {messages?.map((message, index) => (
               <div
                 className="bg-zinc-300/50 dark:bg-zinc-700/50 p-3 rounded-lg mb-2 flex items-start gap-4 leading-7"

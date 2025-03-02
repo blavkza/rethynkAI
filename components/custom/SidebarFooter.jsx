@@ -40,13 +40,15 @@ function SideBarFooter() {
           <option.icon /> {option.name}
         </Button>
       ))}
-      <div
+      <Button
         onClick={() => setOpenDialogLogOut(true)}
-        className=" p-1 px-3 flex items-center justify-start gap-2 dark:hover:bg-zinc-700/50 hover:bg-zinc-100/50 rounded-md cursor-pointer"
+        size="sm"
+        variant="ghost"
+        className="w-full justify-start"
       >
         <LogOut className="w-5 h-5 " />
         Sign Out
-      </div>
+      </Button>
       <LogOutDialog
         openDialog={openDialogLogOut}
         closeDialog={setOpenDialogLogOut}

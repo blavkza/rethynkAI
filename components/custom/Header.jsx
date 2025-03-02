@@ -117,35 +117,42 @@ function Header() {
         )}
 
         {!id && (
-          <div className="flex gap-4">
-            <ModeToggle />
+          <div>
             {isLoading ? (
               <div className="w-8 h-8 rounded-full bg-gray-300 animate-pulse"></div>
             ) : userDetail ? (
-              <div
-                onClick={() => setOpenDialogLogOut(true)}
-                className="flex items-center cursor-pointer"
-              >
-                {userDetail.picture ? (
-                  <Image
-                    src={userDetail.picture}
-                    height={32}
-                    width={32}
-                    className="rounded-full"
-                    alt="User Profile"
-                  />
-                ) : (
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold">
-                    {userDetail?.name?.charAt(0).toUpperCase() || "U"}
-                  </div>
-                )}
+              <div className="flex gap-2">
+                <ModeToggle />
+                <div
+                  onClick={() => setOpenDialogLogOut(true)}
+                  className="flex items-center cursor-pointer"
+                >
+                  {userDetail.picture ? (
+                    <Image
+                      src={userDetail.picture}
+                      height={32}
+                      width={32}
+                      className="rounded-full"
+                      alt="User Profile"
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold">
+                      {userDetail?.name?.charAt(0).toUpperCase() || "U"}
+                    </div>
+                  )}
+                </div>
               </div>
             ) : (
               <div className="flex gap-3">
-                <Button variant="ghost" onClick={() => setOpenDialog(true)}>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => setOpenDialog(true)}
+                >
                   Sign In
                 </Button>
                 <Button
+                  size="sm"
                   onClick={() => setOpenDialog(true)}
                   className="bg-blue-400 hover:bg-blue-300 text-white px-4 py-2 rounded-md"
                 >
